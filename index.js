@@ -32,6 +32,18 @@ const displayActiveTeams = (teams) => {
         teamWebsite.textContent = team.officialSiteUrl;
         listElement.append(teamName, teamElements);
         teamElements.append(teamVenue, teamCity, firstSeason, teamWebsite);
-
+        switch (team.division.name) {
+            case 'Atlantic': 
+                atlantic.append(listElement);
+                break;
+            case 'Metropolitan':
+                metro.append(listElement);
+                break;
+            case 'Central':
+                central.append(listElement);
+                break;
+            case 'Pacific':
+                pacific.append(listElement);
+        }
     })
 }
