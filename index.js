@@ -1,4 +1,4 @@
-// Important Variables 
+// Important Variables
 
 const eastern = document.querySelector('#eastern');
 const western = document.querySelector('#western');
@@ -15,39 +15,41 @@ const divisions = document.querySelectorAll('.division');
 
 // Callback Functions
 
+const createTeamElements = team => {
+    //create elements to display team details
+    const listElement = document.createElement('li')
+    const teamName = document.createElement('h4');
+    teamName.classList = 'team_name'
+    teamName.textContent = team.teamName;
+    const teamElements = document.createElement('ul');
+    const teamVenue = document.createElement('li');
+    teamVenue.textContent = `Venue: ${team.venue.name}`;
+    const teamCity = document.createElement('li');
+    teamCity.textContent = `City: ${team.venue.city}`;
+    const firstSeason = document.createElement('li');
+    firstSeason.textContent = `First Season: ${team.firstYearOfPlay}`;
+    const teamWebsite = document.createElement('link');
+    teamWebsite.href = team.officialSiteUrl;
+    teamWebsite.textContent = team.officialSiteUrl;
+    listElement.append(teamName, teamElements);
+    teamElements.append(teamVenue, teamCity, firstSeason, teamWebsite);
+    switch (team.division.name) {
+        case 'Atlantic': 
+            atlantic.append(listElement);
+            break;
+        case 'Metropolitan':
+            metro.append(listElement);
+            break;
+        case 'Central':
+            central.append(listElement);
+            break;
+        case 'Pacific':
+            pacific.append(listElement);
+    }
+}
+
 const displayActiveTeams = (teams) => {
-    teams.forEach(team => {
-        //create elemts to display team details
-        const listElement = document.createElement('li')
-        const teamName = document.createElement('h4');
-        teamName.classList = 'team_name'
-        teamName.textContent = team.teamName;
-        const teamElements = document.createElement('ul');
-        const teamVenue = document.createElement('li');
-        teamVenue.textContent = `Venue: ${team.venue.name}`;
-        const teamCity = document.createElement('li');
-        teamCity.textContent = `City: ${team.venue.city}`;
-        const firstSeason = document.createElement('li');
-        firstSeason.textContent = `First Season: ${team.firstYearOfPlay}`;
-        const teamWebsite = document.createElement('link');
-        teamWebsite.href = team.officialSiteUrl;
-        teamWebsite.textContent = team.officialSiteUrl;
-        listElement.append(teamName, teamElements);
-        teamElements.append(teamVenue, teamCity, firstSeason, teamWebsite);
-        switch (team.division.name) {
-            case 'Atlantic': 
-                atlantic.append(listElement);
-                break;
-            case 'Metropolitan':
-                metro.append(listElement);
-                break;
-            case 'Central':
-                central.append(listElement);
-                break;
-            case 'Pacific':
-                pacific.append(listElement);
-        }
-    })
+    teams.forEach(createTeamElements(team))
     eastern.removeAttribute('.hidden');
     western.removeAttribute('.hidden');
     atlantic.removeAttribute('.hidden');
@@ -56,3 +58,5 @@ const displayActiveTeams = (teams) => {
     pacific.removeAttribute('.hidden');
     divisions.removeAttribute('.hidden');
 }
+
+// Events
