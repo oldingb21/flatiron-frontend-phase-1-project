@@ -61,7 +61,7 @@ const activeTeamFetch = e => {
     .then(res => res.json())
     .then(teamsData => {
         // I have to use dot notation in the callback below
-        // because there are 2 parent objects in the returned json
+        // because there are 2 parent arrays in the returned json
         // response. One has a copyright disclaimer and the teams below it.
         //teamsData.teams returns an Array of teams
         return displayActiveTeams(teamsData.teams);
@@ -75,7 +75,7 @@ const activeTeamFetch = e => {
 //so I have to create a new function to handle creating these elements.
 //The paths are different in this API.
 
-const createPastTeam = team => {
+const createInactiveTeam = team => {
     //I am only fetching inactive teams here, so this if statement should separate
     //inactive teams from active teams.
     if (team.lastSeasonId !== 'null') {
@@ -91,15 +91,28 @@ const createPastTeam = team => {
         const lastSeasonString = team.lastSeasonId.toString();
         const lastSeason = document.createElement('li');
         lastSeason.textContent = `Last Season: ${lastSeasonString.substring(0,3)}-${lastSeasonString.substring(4,7)}`;
-
+        listElement.append(teamName, teamElements);
+        teamElements.append(teamCity, firstSeason, lastSeason);
     }
+}
+
+const displayInactiveTeams = teams => {
+    return teams.forEach(team => createInactiveTeam(team));
+}
+
+const inactiveTeamFetch = e => {
+    fetch('https://records.nhl.com/site/api/franchise')
+    .then(res => res.json())
+    .then(teamsData => {
+        //similarly to the other fetch, the data we need is nested inside a parent
+        //array (data), so we need dot notation to access that array.
+        return displayInactiveTeams(teamsData.data);
+    })
+    inactiveBtn.removeEventListener('click', inactiveTeamFetch, true);
 }
 
 // Events
 
 activeBtn.addEventListener('click', activeTeamFetch, true);
-//activeBtn.removeEventListener('click', activeTeamFetch, true);
 
-inactiveBtn.addEventListener('click', e => {
-    console.log('inactive btn event also works!')
-})
+inactiveBtn.addEventListener('click', inactiveTeamFetch, true)
