@@ -2,6 +2,6 @@ body {
     background-color: rgb(200 233 233);
 }
 
-.conference, .division, .list {
+.hidden {
     display: none;
 }
