@@ -9,6 +9,8 @@ const pacific = document.querySelector('#pacific_list');
 const pastTeams = document.querySelector('#past_list');
 const current = document.querySelector('#current')
 const past = document.querySelector('#past')
+const divisions = document.querySelectorAll('.division');
+
 
 
 // Callback Functions
@@ -46,4 +48,11 @@ const displayActiveTeams = (teams) => {
                 pacific.append(listElement);
         }
     })
+    eastern.removeAttribute('.hidden');
+    western.removeAttribute('.hidden');
+    atlantic.removeAttribute('.hidden');
+    metro.removeAttribute('.hidden');
+    central.removeAttribute('.hidden');
+    pacific.removeAttribute('.hidden');
+    divisions.removeAttribute('.hidden');
 }
