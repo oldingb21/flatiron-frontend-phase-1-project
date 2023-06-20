@@ -71,8 +71,28 @@ const activeTeamFetch = e => {
     activeBtn.removeEventListener('click', activeTeamFetch, true);
 }
 
-const createPastTeam = team => {
+//I am using a separate API to get the data for former teams,
+//so I have to create a new function to handle creating these elements.
+//The paths are different in this API.
 
+const createPastTeam = team => {
+    //I am only fetching inactive teams here, so this if statement should separate
+    //inactive teams from active teams.
+    if (team.lastSeasonId !== 'null') {
+        const listElement = document.createElement('li');
+        const teamName = document.createElement('h4');
+        teamName.textContent = team.fullName;
+        const teamElements = document.createElement('ul');
+        const teamCity = document.createElement('li');
+        teamCity.textContent = team.teamPlaceName;
+        const firstSeasonString = team.firstSeasonId.toString() 
+        const firstSeason = document.createElement('li');
+        firstSeason.textContent = `First Season: ${firstSeasonString.substring(0,3)}-${firstSeasonString.substring(4,7)}`;
+        const lastSeasonString = team.lastSeasonId.toString();
+        const lastSeason = document.createElement('li');
+        lastSeason.textContent = `Last Season: ${lastSeasonString.substring(0,3)}-${lastSeasonString.substring(4,7)}`;
+
+    }
 }
 
 // Events
