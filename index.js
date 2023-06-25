@@ -16,27 +16,37 @@ const inactiveBtn = document.querySelector('#inactive_btn')
 
 
 // Callback Functions
+
 // I have to create multiple callbacks to do similar things, because
 // I have to use 2 APIs in order to get all the data I want, and the paths
 // are not the same in each API
+
 const createActiveTeam = team => {
     //create elements to display team details
     const listElement = document.createElement('li')
+    
     const teamName = document.createElement('h4');
     teamName.classList = 'team_name'
     teamName.textContent = team.name;
+    
     const teamElements = document.createElement('ul');
+    
     const teamVenue = document.createElement('li');
     teamVenue.textContent = `Venue: ${team.venue.name}`;
+    
     const teamCity = document.createElement('li');
     teamCity.textContent = `City: ${team.venue.city}`;
+    
     const firstSeason = document.createElement('li');
     firstSeason.textContent = `First Season: ${team.firstYearOfPlay}`;
-    const teamWebsite = document.createElement('link');
+    
+    const teamWebsite = document.createElement('a');
     teamWebsite.href = team.officialSiteUrl;
     teamWebsite.textContent = team.officialSiteUrl;
+    
     listElement.append(teamName, teamElements);
     teamElements.append(teamCity, teamVenue, firstSeason, teamWebsite);
+    
     switch (team.division.name) {
         case 'Atlantic': 
             atlantic.append(listElement);
@@ -53,7 +63,7 @@ const createActiveTeam = team => {
 }
 
 const displayActiveTeams = teams => {
-    return teams.forEach(team => createActiveTeam(team))
+    teams.forEach(team => createActiveTeam(team))
 }
 
 const activeTeamFetch = e => {
@@ -64,7 +74,7 @@ const activeTeamFetch = e => {
         // because there are 2 parent arrays in the returned json
         // response. One has a copyright disclaimer and the teams below it.
         //teamsData.teams returns an Array of teams
-        return displayActiveTeams(teamsData.teams);
+        displayActiveTeams(teamsData.teams);
     })
     // remove event listener to prevent the event from populating
     // the DOM with duplicate elements
@@ -101,8 +111,8 @@ const displayInactiveTeams = teams => {
 }
 
 const inactiveTeamFetch = e => {
-    fetch('https://records.nhl.com/site/api/franchise')
-    .then(res => res.json())
+    fetch('https://records.nhl.com/site/api/franchise', {mode: "no-cors"})
+    .then(res => console.log(res))
     .then(teamsData => {
         //similarly to the other fetch, the data we need is nested inside a parent
         //array (data), so we need dot notation to access that array.
@@ -115,4 +125,4 @@ const inactiveTeamFetch = e => {
 
 activeBtn.addEventListener('click', activeTeamFetch, true);
 
-inactiveBtn.addEventListener('click', inactiveTeamFetch, true)
+//inactiveBtn.addEventListener('click', inactiveTeamFetch, true);
