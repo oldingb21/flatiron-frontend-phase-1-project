@@ -125,4 +125,6 @@ const inactiveTeamFetch = e => {
 
 activeBtn.addEventListener('click', activeTeamFetch, true);
 
+//I have to write some backend code to get this fetch to work below
+
 //inactiveBtn.addEventListener('click', inactiveTeamFetch, true);
