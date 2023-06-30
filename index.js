@@ -1,5 +1,6 @@
 // Important Variables
 
+const body = document.querySelector('body')
 const eastern = document.querySelector('#eastern');
 const western = document.querySelector('#western');
 const atlantic = document.querySelector('#atlantic_list');
@@ -14,6 +15,34 @@ const activeBtn = document.querySelector('#active_btn');
 const inactiveBtn = document.querySelector('#inactive_btn');
 const commentForm = document.querySelector('#comment_form');
 const favTeamSelect = document.querySelector('#fav_team_select');
+
+class Comment {
+    constructor(name, favTeam, comment) {
+        this.name = name,
+        this.team = favTeam,
+        this.comment = comment
+    }
+
+    createCommentElements () {
+        const commentElement = document.createElement('section');
+        commentElement.classList('comment_card');
+        const commentHeader = document.createElement('header');
+        
+        const user = document.createElement('h4');
+        user.textContent = this.name;
+
+        const userTeam = document.createElement('h4');
+        userTeam.textContent = this.team;
+
+        const userComment = document.createElement('p');
+        userComment.textContent = this.comment;
+        
+        commentElement.append(commentHeader, userComment);
+        commentHeader.append(user, userTeam);
+        body.append(commentElement);
+
+    }
+}
 
 
 
@@ -42,6 +71,8 @@ const createActiveTeam = team => {
     const firstSeason = document.createElement('li');
     firstSeason.textContent = `First Season: ${team.firstYearOfPlay}`;
     
+    //need to make sure this link opens a new tab and not make you leave the webpage
+
     const teamWebsite = document.createElement('a');
     teamWebsite.href = team.officialSiteUrl;
     teamWebsite.textContent = team.officialSiteUrl;
@@ -66,9 +97,7 @@ const createActiveTeam = team => {
     }
 }
 
-const loopAndDisplayActiveTeams = teams => {
-    teams.forEach(team => createActiveTeam(team))
-}
+const loopAndDisplayActiveTeams = teams => teams.forEach(team => createActiveTeam(team))
 
 const activeTeamFetch = e => {
     fetch('https://statsapi.web.nhl.com/api/v1/teams')
@@ -145,7 +174,7 @@ const activeTeamOptionsFetch = e => {
 
 activeBtn.addEventListener('click', activeTeamFetch, true);
 
-//I have to write some backend code to get this fetch to work below
+//I have to write some backend code to get this event/fetch to work below
 
 //inactiveBtn.addEventListener('click', inactiveTeamFetch, true);
 
