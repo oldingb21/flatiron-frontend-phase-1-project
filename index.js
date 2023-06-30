@@ -11,7 +11,9 @@ const current = document.querySelector('#current')
 const past = document.querySelector('#past')
 const divisions = document.querySelectorAll('.division');
 const activeBtn = document.querySelector('#active_btn');
-const inactiveBtn = document.querySelector('#inactive_btn')
+const inactiveBtn = document.querySelector('#inactive_btn');
+const commentForm = document.querySelector('#comment_form');
+const favTeamSelect = document.querySelector('#fav_team_select');
 
 
 
@@ -47,6 +49,8 @@ const createActiveTeam = team => {
     listElement.append(teamName, teamElements);
     teamElements.append(teamCity, teamVenue, firstSeason, teamWebsite);
     
+    //I want to split this switch into a spearate function
+    
     switch (team.division.name) {
         case 'Atlantic': 
             atlantic.append(listElement);
@@ -62,7 +66,7 @@ const createActiveTeam = team => {
     }
 }
 
-const displayActiveTeams = teams => {
+const loopAndDisplayActiveTeams = teams => {
     teams.forEach(team => createActiveTeam(team))
 }
 
@@ -74,7 +78,7 @@ const activeTeamFetch = e => {
         // because there are 2 parent arrays in the returned json
         // response. One has a copyright disclaimer and the teams below it.
         //teamsData.teams returns an Array of teams
-        displayActiveTeams(teamsData.teams);
+        loopAndDisplayActiveTeams(teamsData.teams);
     })
     // remove event listener to prevent the event from populating
     // the DOM with duplicate elements
@@ -106,9 +110,7 @@ const createInactiveTeam = team => {
     }
 }
 
-const displayInactiveTeams = teams => {
-    return teams.forEach(team => createInactiveTeam(team));
-}
+const displayInactiveTeams = teams => teams.forEach(team => createInactiveTeam(team));
 
 const inactiveTeamFetch = e => {
     fetch('https://records.nhl.com/site/api/franchise', {mode: "no-cors"})
@@ -116,10 +118,21 @@ const inactiveTeamFetch = e => {
     .then(teamsData => {
         //similarly to the other fetch, the data we need is nested inside a parent
         //array (data), so we need dot notation to access that array.
-        return displayInactiveTeams(teamsData.data);
+        displayInactiveTeams(teamsData.data);
     })
     inactiveBtn.removeEventListener('click', inactiveTeamFetch, true);
 }
+
+//callbacks to fill my select element with options
+
+const createActiveTeamOptions = team => {
+    const teamOption = document.createElement('option');
+    teamOption.textContent = team.name;
+    favTeamSelect.appendChild(teamOption);
+}
+
+const loopAndDisplayActiveTeamOptions = teams => teams.forEach(team => createActiveTeamOptions(team));
+
 
 // Events
 
@@ -128,3 +141,5 @@ activeBtn.addEventListener('click', activeTeamFetch, true);
 //I have to write some backend code to get this fetch to work below
 
 //inactiveBtn.addEventListener('click', inactiveTeamFetch, true);
+
+//commentForm.addEventListener('submit',)
