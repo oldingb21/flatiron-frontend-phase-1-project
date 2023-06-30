@@ -133,6 +133,13 @@ const createActiveTeamOptions = team => {
 
 const loopAndDisplayActiveTeamOptions = teams => teams.forEach(team => createActiveTeamOptions(team));
 
+const activeTeamOptionsFetch = e => {
+    fetch('https://statsapi.web.nhl.com/api/v1/teams')
+    .then(res => res.json())
+    .then(teamsData => loopAndDisplayActiveTeamOptions(teamsData.teams))
+
+    favTeamSelect.removeEventListener('click', activeTeamOptionsFetch, true)
+}
 
 // Events
 
@@ -142,4 +149,9 @@ activeBtn.addEventListener('click', activeTeamFetch, true);
 
 //inactiveBtn.addEventListener('click', inactiveTeamFetch, true);
 
-//commentForm.addEventListener('submit',)
+favTeamSelect.addEventListener('click', activeTeamOptionsFetch, true);
+
+commentForm.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log('submit event is working')
+})
