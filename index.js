@@ -25,7 +25,7 @@ class Comment {
 
     createCommentElements () {
         const commentElement = document.createElement('section');
-        commentElement.classList('comment_card');
+        commentElement.className = 'comment_element';
         const commentHeader = document.createElement('header');
         
         const user = document.createElement('h4');
@@ -171,7 +171,8 @@ const activeTeamOptionsFetch = e => {
 
 const displayNewComment = e => {
     e.preventDefault();
-
+    const newComment = new Comment(e.target.user_name.value, e.target.fav_team_select.value, e.target.new_comment.value)
+    newComment.createCommentElements();
 }
 
 // Events
@@ -184,9 +185,4 @@ activeBtn.addEventListener('click', activeTeamFetch, true);
 
 favTeamSelect.addEventListener('click', activeTeamOptionsFetch, true);
 
-commentForm.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log(e.target.user_name.value)
-    console.log(e.target.fav_team_select.value)
-    console.log(e.target.new_comment.value)
-})
+commentForm.addEventListener('submit', displayNewComment)
