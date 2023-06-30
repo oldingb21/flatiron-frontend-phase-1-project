@@ -40,7 +40,6 @@ class Comment {
         commentElement.append(commentHeader, userComment);
         commentHeader.append(user, userTeam);
         body.append(commentElement);
-
     }
 }
 
@@ -170,6 +169,11 @@ const activeTeamOptionsFetch = e => {
     favTeamSelect.removeEventListener('click', activeTeamOptionsFetch, true)
 }
 
+const displayNewComment = e => {
+    e.preventDefault();
+
+}
+
 // Events
 
 activeBtn.addEventListener('click', activeTeamFetch, true);
@@ -182,5 +186,7 @@ favTeamSelect.addEventListener('click', activeTeamOptionsFetch, true);
 
 commentForm.addEventListener('submit', e => {
     e.preventDefault();
-    console.log('submit event is working')
+    console.log(e.target.user_name.value)
+    console.log(e.target.fav_team_select.value)
+    console.log(e.target.new_comment.value)
 })
