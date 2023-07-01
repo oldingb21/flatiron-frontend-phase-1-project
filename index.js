@@ -15,6 +15,7 @@ const activeBtn = document.querySelector('#active_btn');
 const inactiveBtn = document.querySelector('#inactive_btn');
 const commentForm = document.querySelector('#comment_form');
 const favTeamSelect = document.querySelector('#fav_team_select');
+const horn = document.querySelector('#maple_leafs_horn');
 
 class Comment {
     constructor(name, favTeam, comment) {
@@ -108,6 +109,9 @@ const activeTeamFetch = e => {
         //teamsData.teams returns an Array of teams
         loopAndDisplayActiveTeams(teamsData.teams);
     })
+
+    horn.play();
+
     // remove event listener to prevent the event from populating
     // the DOM with duplicate elements
     activeBtn.removeEventListener('click', activeTeamFetch, true);
@@ -175,7 +179,15 @@ const displayNewComment = e => {
     newComment.createCommentElements();
 }
 
+const playHorn = () => {
+    horn.play();
+
+    body.removeEventListener('mouseenter', playHorn, true);
+}
+
 // Events
+
+body.addEventListener('mouseenter', playHorn, true)
 
 activeBtn.addEventListener('click', activeTeamFetch, true);
 
