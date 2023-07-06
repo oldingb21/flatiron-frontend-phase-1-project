@@ -197,12 +197,22 @@ const createDialogue = e => {
     const dialogueSubHeader = document.createElement('h3');
     dialogueSubHeader.textContent = "Don't forget to tell us your favorite team before you leave! 🏒";
 
+    const closeForm = document.createElement('form');
+    
     const closeBtn = document.createElement('button');
     closeBtn.textContent = 'Close';
+    closeBtn.value = 'cancel';
+    closeBtn.formMethod = 'dialog';
+
+    // closeBtn.addEventListener('click', () => {
+    //     e.preventDefault;
+    //     dialogue.classList = "hidden";
+    // })
 
     body.append(dialogue);
+    closeForm.append(closeBtn)
     dialogue.showModal();
-    dialogue.append(dialogueHeader, dialogueImage, dialoguePara, dialogueSubHeader);
+    dialogue.append(dialogueHeader, dialogueImage, dialoguePara, dialogueSubHeader, closeForm);
 }
 
 // Events
