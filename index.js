@@ -179,15 +179,45 @@ const displayNewComment = e => {
     newComment.createCommentElements();
 }
 
-const playHorn = () => {
-    horn.play();
+const createDialogue = e => {
+    const dialogue = document.createElement('dialog');
+    dialogue.id = 'load_dialogue';
+    
+    const dialogueHeader = document.createElement('h1');
+    dialogueHeader.textContent = 'Welcome Hockey Fans';
 
-    body.removeEventListener('mouseenter', playHorn, true);
+    const dialogueImage = document.createElement('img');
+    dialogueImage.src = './images/pexels-lynda-sanchez-1770650.jpg';
+    dialogueImage.alt = 'Michigan and Michigan Tech players skate in the open ice';
+    dialogueImage.id = 'dialog_image'
+
+    const dialoguePara = document.createElement('p');
+    dialoguePara.textContent = 'Thank you for visiting! Take a look at the past and present teams of the NHL.';
+
+    const dialogueSubHeader = document.createElement('h3');
+    dialogueSubHeader.textContent = "Don't forget to tell us your favorite team before you leave! 🏒";
+
+    const closeForm = document.createElement('form');
+    
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = 'Close';
+    closeBtn.value = 'cancel';
+    closeBtn.formMethod = 'dialog';
+
+    // closeBtn.addEventListener('click', () => {
+    //     e.preventDefault;
+    //     dialogue.classList = "hidden";
+    // })
+
+    body.append(dialogue);
+    closeForm.append(closeBtn)
+    dialogue.showModal();
+    dialogue.append(dialogueHeader, dialogueImage, dialoguePara, dialogueSubHeader, closeForm);
 }
 
 // Events
 
-body.addEventListener('mouseenter', playHorn, true)
+document.addEventListener('DOMContentLoaded', createDialogue);
 
 activeBtn.addEventListener('click', activeTeamFetch, true);
 
