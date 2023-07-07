@@ -16,3 +16,17 @@ body {
 .hidden {
     display: none;
 }
+
+#image-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10%;
+}
+
+.header_images {
+    width: auto;
+    max-height: 90%;
+    object-fit: cover;
+}
