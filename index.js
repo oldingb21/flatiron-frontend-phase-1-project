@@ -99,6 +99,15 @@ const createActiveTeam = team => {
 
 const loopAndDisplayActiveTeams = teams => teams.forEach(team => createActiveTeam(team))
 
+const catchFoo = error => {
+    console.log(error);
+    
+    const sorryMessage = document.createElement('p');
+    sorryMessage.textContent = 'Sorry the teams could not load at this time.';
+
+    current.append(sorryMessage)
+}
+
 const activeTeamFetch = e => {
     fetch('https://statsapi.web.nhl.com/api/v1/teams')
     .then(res => res.json())
@@ -109,6 +118,7 @@ const activeTeamFetch = e => {
         //teamsData.teams returns an Array of teams
         loopAndDisplayActiveTeams(teamsData.teams);
     })
+    .catch(catchFoo)
 
     horn.play();
 
