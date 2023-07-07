@@ -52,6 +52,22 @@ class Comment {
 // I have to use 2 APIs in order to get all the data I want, and the paths
 // are not the same in each API
 
+function divisionSwitch (division) {
+    switch (division) {
+        case 'Atlantic': 
+            atlantic.append(listElement);
+            break;
+        case 'Metropolitan':
+            metro.append(listElement);
+            break;
+        case 'Central':
+            central.append(listElement);
+            break;
+        case 'Pacific':
+            pacific.append(listElement);
+    }
+}
+
 const createActiveTeam = team => {
     //create elements to display team details
     const listElement = document.createElement('li')
@@ -80,8 +96,6 @@ const createActiveTeam = team => {
     listElement.append(teamName, teamElements);
     teamElements.append(teamCity, teamVenue, firstSeason, teamWebsite);
     
-    //I want to split this switch into a spearate function
-    
     switch (team.division.name) {
         case 'Atlantic': 
             atlantic.append(listElement);
@@ -97,7 +111,20 @@ const createActiveTeam = team => {
     }
 }
 
-const loopAndDisplayActiveTeams = teams => teams.forEach(team => createActiveTeam(team))
+const loopAndDisplayActiveTeams = teams => {
+    teams.forEach(team => createActiveTeam(team))
+
+    current.classList.remove('hidden');
+    eastern.classList.remove('hidden');
+    western.classList.remove('hidden');
+    atlantic.classList.remove('hidden');
+    metro.classList.remove('hidden');
+    central.classList.remove('hidden');
+    pacific.classList.remove('hidden');
+    divisions.forEach((division) => {
+        division.classList.remove('.hidden');
+    })
+}
 
 const catchFoo = error => {
     console.log(error);
