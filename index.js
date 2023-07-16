@@ -228,8 +228,8 @@ const createDialogue = e => {
     dialogHeader.textContent = 'Welcome Hockey Fans!!!';
 
     const dialogImage = document.createElement('img');
-    dialogImage.src = './images/pexels-lynda-sanchez-1770650.jpg';
-    dialogImage.alt = 'Michigan and Michigan Tech players skate in the open ice';
+    dialogImage.src = './images/NHL-logo-scuffed-ice.jpg';
+    dialogImage.alt = 'NHL logo under roughed ice';
     dialogImage.id = 'dialog_image'
 
     const dialogPara = document.createElement('p');

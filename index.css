@@ -26,7 +26,8 @@ body {
 }
 
 dialog {
-    width: 75%
+    width: 75%;
+    background-color: #cbe7ec;
 }
 
 
