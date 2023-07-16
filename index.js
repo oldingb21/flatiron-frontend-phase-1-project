@@ -16,6 +16,7 @@ const inactiveBtn = document.querySelector('#inactive_btn');
 const commentForm = document.querySelector('#comment_form');
 const favTeamSelect = document.querySelector('#fav_team_select');
 const horn = document.querySelector('#maple_leafs_horn');
+const commentSection = document.querySelector('#comment-section')
 
 class Comment {
     constructor(name, favTeam, comment) {
@@ -26,7 +27,7 @@ class Comment {
 
     createCommentElements () {
         const commentElement = document.createElement('section');
-        commentElement.className = 'comment_element';
+        commentElement.className = 'comment-element';
         const commentHeader = document.createElement('header');
         
         const user = document.createElement('h4');
@@ -40,7 +41,7 @@ class Comment {
         
         commentElement.append(commentHeader, userComment);
         commentHeader.append(user, userTeam);
-        body.append(commentElement);
+        commentSection.append(commentElement);
     }
 }
 
