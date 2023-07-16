@@ -28,14 +28,11 @@ dialog {
     width: 75%
 }
 
-#first-image {
-    padding-left: 5%;
-}
+
 
 .header-images {
     max-height: 200px;
     max-width: auto;
-    
 }
 
 #image-section {
@@ -46,4 +43,50 @@ dialog {
     column-gap: 5%;
 }
 
+#main-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+#current {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 500px) {
+    #atlantic_list {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    #metropolitan_list {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    #central_list {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+    #pacific_list {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
