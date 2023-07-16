@@ -122,7 +122,7 @@ const loopAndDisplayActiveTeams = teams => {
     central.classList.remove('hidden');
     pacific.classList.remove('hidden');
     divisions.forEach((division) => {
-        division.classList.remove('.hidden');
+        division.classList.remove('hidden');
     })
 }
 
@@ -217,22 +217,25 @@ const displayNewComment = e => {
 }
 
 const createDialogue = e => {
-    const dialogue = document.createElement('dialog');
-    dialogue.id = 'load_dialogue';
+    const dialog = document.createElement('dialog');
+    dialog.id = 'load_dialogue';
+
+    const dialogSection = document.createElement('section');
+    dialogSection.id = "dialog-section";
     
-    const dialogueHeader = document.createElement('h1');
-    dialogueHeader.textContent = 'Welcome Hockey Fans';
+    const dialogHeader = document.createElement('h1');
+    dialogHeader.textContent = 'Welcome Hockey Fans!!!';
 
-    const dialogueImage = document.createElement('img');
-    dialogueImage.src = './images/pexels-lynda-sanchez-1770650.jpg';
-    dialogueImage.alt = 'Michigan and Michigan Tech players skate in the open ice';
-    dialogueImage.id = 'dialog_image'
+    const dialogImage = document.createElement('img');
+    dialogImage.src = './images/pexels-lynda-sanchez-1770650.jpg';
+    dialogImage.alt = 'Michigan and Michigan Tech players skate in the open ice';
+    dialogImage.id = 'dialog_image'
 
-    const dialoguePara = document.createElement('p');
-    dialoguePara.textContent = 'Thank you for visiting! Take a look at the past and present teams of the NHL.';
+    const dialogPara = document.createElement('p');
+    dialogPara.textContent = 'Thank you for visiting! Take a look at the current teams of the NHL.';
 
-    const dialogueSubHeader = document.createElement('h3');
-    dialogueSubHeader.textContent = "Don't forget to tell us your favorite team before you leave! 🏒";
+    const dialogSubHeader = document.createElement('h3');
+    dialogSubHeader.textContent = "Don't forget to tell us your favorite team before you leave! 🏒";
 
     const closeForm = document.createElement('form');
     
@@ -246,10 +249,11 @@ const createDialogue = e => {
     //     dialogue.classList = "hidden";
     // })
 
-    body.append(dialogue);
-    closeForm.append(closeBtn)
-    dialogue.showModal();
-    dialogue.append(dialogueHeader, dialogueImage, dialoguePara, dialogueSubHeader, closeForm);
+    body.append(dialog);
+    closeForm.append(closeBtn);
+    dialog.showModal();
+    dialogSection.append(dialogHeader, dialogImage, dialogPara, dialogSubHeader, closeForm);
+    dialog.append(dialogSection);
 }
 
 // Events

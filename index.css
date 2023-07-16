@@ -17,16 +17,33 @@ body {
     display: none;
 }
 
+#dialog-section {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+dialog {
+    width: 75%
+}
+
+#first-image {
+    padding-left: 5%;
+}
+
+.header-images {
+    max-height: 200px;
+    max-width: auto;
+    
+}
+
 #image-section {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    column-gap: 10%;
+    column-gap: 5%;
 }
 
-.header_images {
-    width: auto;
-    max-height: 90%;
-    object-fit: cover;
-}
+
