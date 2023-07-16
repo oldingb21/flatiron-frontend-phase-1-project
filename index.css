@@ -33,7 +33,7 @@ dialog {
 
 
 .header-images {
-    max-height: 200px;
+    max-height: 250px;
     max-width: auto;
 }
 
@@ -102,6 +102,8 @@ main {
 }
 
 footer {
+    color:#ffffff;
+    background-color: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
