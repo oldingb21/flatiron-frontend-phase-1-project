@@ -3,19 +3,19 @@
 const body = document.querySelector('body')
 const eastern = document.querySelector('#eastern');
 const western = document.querySelector('#western');
-const atlantic = document.querySelector('#atlantic_list');
-const metro = document.querySelector('#metropolitan_list');
-const central = document.querySelector('#central_list');
-const pacific = document.querySelector('#pacific_list');
-const pastTeams = document.querySelector('#past_list');
+const atlantic = document.querySelector('#atlantic-list');
+const metro = document.querySelector('#metropolitan-list');
+const central = document.querySelector('#central-list');
+const pacific = document.querySelector('#pacific-list');
+const pastTeams = document.querySelector('#past-list');
 const current = document.querySelector('#current')
 const past = document.querySelector('#past')
 const divisions = document.querySelectorAll('.division');
-const activeBtn = document.querySelector('#active_btn');
-const inactiveBtn = document.querySelector('#inactive_btn');
-const commentForm = document.querySelector('#comment_form');
-const favTeamSelect = document.querySelector('#fav_team_select');
-const horn = document.querySelector('#maple_leafs_horn');
+const activeBtn = document.querySelector('#active-btn');
+const inactiveBtn = document.querySelector('#inactive-btn');
+const commentForm = document.querySelector('#comment-form');
+const favTeamSelect = document.querySelector('#fav-team-select');
+const horn = document.querySelector('#maple-leafs-horn');
 const commentSection = document.querySelector('#comment-section')
 
 class Comment {
@@ -45,8 +45,6 @@ class Comment {
     }
 }
 
-
-
 // Callback Functions
 
 // I have to create multiple callbacks to do similar things, because
@@ -74,7 +72,7 @@ const createActiveTeam = team => {
     const listElement = document.createElement('li')
     
     const teamName = document.createElement('h4');
-    teamName.classList = 'team_name'
+    teamName.classList = 'team-name'
     teamName.textContent = team.name;
     
     const teamElements = document.createElement('ul');
@@ -93,6 +91,7 @@ const createActiveTeam = team => {
     const teamWebsite = document.createElement('a');
     teamWebsite.href = team.officialSiteUrl;
     teamWebsite.textContent = team.officialSiteUrl;
+    teamWebsite.target = '_blank';
     
     listElement.append(teamName, teamElements);
     teamElements.append(teamCity, teamVenue, firstSeason, teamWebsite);
@@ -219,7 +218,7 @@ const displayNewComment = e => {
 
 const createDialogue = e => {
     const dialog = document.createElement('dialog');
-    dialog.id = 'load_dialogue';
+    dialog.id = 'load-dialogue';
 
     const dialogSection = document.createElement('section');
     dialogSection.id = "dialog-section";
@@ -230,7 +229,7 @@ const createDialogue = e => {
     const dialogImage = document.createElement('img');
     dialogImage.src = './images/NHL-logo-scuffed-ice.jpg';
     dialogImage.alt = 'NHL logo under roughed ice';
-    dialogImage.id = 'dialog_image'
+    dialogImage.id = 'dialog-image'
 
     const dialogPara = document.createElement('p');
     dialogPara.textContent = 'Thank you for visiting! Take a look at the current teams of the NHL.';

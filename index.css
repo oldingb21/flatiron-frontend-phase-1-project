@@ -3,11 +3,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#load_dialogue {
+#load-dialogue {
     z-index: 2
 }
 
-#dialog_image {
+#dialog-image {
     display: block;
     max-width: 75%;
     height: auto;
@@ -59,7 +59,7 @@ dialog {
     align-items: center;
 }
 
-#comment_form {
+#comment-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,7 +98,7 @@ main {
     align-items: center;
     border: 2px solid #000;
     min-width: 80%;
-    margin-bottom: 10px;
+    margin-bottom: 10px
 }
 
 footer {
@@ -108,23 +108,23 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 10px
 }
 
 @media screen and (min-width: 500px) {
-    #atlantic_list {
+    #atlantic-list {
         display: grid;
         grid-template-columns: auto auto;
     }
-    #metropolitan_list {
+    #metropolitan-list {
         display: grid;
         grid-template-columns: auto auto;
     }
-    #central_list {
+    #central-list {
         display: grid;
         grid-template-columns: auto auto;
     }
-    #pacific_list {
+    #pacific-list {
         display: grid;
         grid-template-columns: auto auto;
     }
