@@ -112,19 +112,7 @@ footer {
 }
 
 @media screen and (min-width: 500px) {
-    #atlantic-list {
-        display: grid;
-        grid-template-columns: auto auto;
-    }
-    #metropolitan-list {
-        display: grid;
-        grid-template-columns: auto auto;
-    }
-    #central-list {
-        display: grid;
-        grid-template-columns: auto auto;
-    }
-    #pacific-list {
+    .list {
         display: grid;
         grid-template-columns: auto auto;
     }
