@@ -1,18 +1,133 @@
 body {
-    background-color: rgb(200 233 233);
+    background-color: #cbe7ec;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-#load_dialogue {
+#load-dialogue {
     z-index: 2
 }
 
-#dialog_image {
+#dialog-image {
     display: block;
-    max-width: 50%;
+    max-width: 75%;
     height: auto;
 
 }
 
 .hidden {
     display: none;
+}
+
+#dialog-section {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+dialog {
+    width: 75%;
+    background-color: #cbe7ec;
+}
+
+
+
+.header-images {
+    max-height: 250px;
+    max-width: auto;
+}
+
+#image-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5%;
+}
+
+#main-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#current {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-element {
+    background-color: #cbe7ec;
+    border-bottom: 2px solid #000 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 80%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#comment-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    min-width: 80%;
+    margin-bottom: 10px
+}
+
+footer {
+    color:#ffffff;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px
+}
+
+@media screen and (min-width: 500px) {
+    .list {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width: 499px) {
+    #image-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 10px;
+    }
+
+    .header-images {
+        max-width: 75%;
+    }
 }

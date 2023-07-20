@@ -3,19 +3,20 @@
 const body = document.querySelector('body')
 const eastern = document.querySelector('#eastern');
 const western = document.querySelector('#western');
-const atlantic = document.querySelector('#atlantic_list');
-const metro = document.querySelector('#metropolitan_list');
-const central = document.querySelector('#central_list');
-const pacific = document.querySelector('#pacific_list');
-const pastTeams = document.querySelector('#past_list');
+const atlantic = document.querySelector('#atlantic-list');
+const metro = document.querySelector('#metropolitan-list');
+const central = document.querySelector('#central-list');
+const pacific = document.querySelector('#pacific-list');
+const pastTeams = document.querySelector('#past-list');
 const current = document.querySelector('#current')
 const past = document.querySelector('#past')
 const divisions = document.querySelectorAll('.division');
-const activeBtn = document.querySelector('#active_btn');
-const inactiveBtn = document.querySelector('#inactive_btn');
-const commentForm = document.querySelector('#comment_form');
-const favTeamSelect = document.querySelector('#fav_team_select');
-const horn = document.querySelector('#maple_leafs_horn');
+const activeBtn = document.querySelector('#active-btn');
+const inactiveBtn = document.querySelector('#inactive-btn');
+const commentForm = document.querySelector('#comment-form');
+const favTeamSelect = document.querySelector('#fav-team-select');
+const horn = document.querySelector('#maple-leafs-horn');
+const commentSection = document.querySelector('#comment-section')
 
 class Comment {
     constructor(name, favTeam, comment) {
@@ -26,7 +27,7 @@ class Comment {
 
     createCommentElements () {
         const commentElement = document.createElement('section');
-        commentElement.className = 'comment_element';
+        commentElement.className = 'comment-element';
         const commentHeader = document.createElement('header');
         
         const user = document.createElement('h4');
@@ -40,11 +41,9 @@ class Comment {
         
         commentElement.append(commentHeader, userComment);
         commentHeader.append(user, userTeam);
-        body.append(commentElement);
+        commentSection.append(commentElement);
     }
 }
-
-
 
 // Callback Functions
 
@@ -52,12 +51,28 @@ class Comment {
 // I have to use 2 APIs in order to get all the data I want, and the paths
 // are not the same in each API
 
+function divisionSwitch (division) {
+    switch (division) {
+        case 'Atlantic': 
+            atlantic.append(listElement);
+            break;
+        case 'Metropolitan':
+            metro.append(listElement);
+            break;
+        case 'Central':
+            central.append(listElement);
+            break;
+        case 'Pacific':
+            pacific.append(listElement);
+    }
+}
+
 const createActiveTeam = team => {
     //create elements to display team details
     const listElement = document.createElement('li')
     
     const teamName = document.createElement('h4');
-    teamName.classList = 'team_name'
+    teamName.classList = 'team-name'
     teamName.textContent = team.name;
     
     const teamElements = document.createElement('ul');
@@ -76,11 +91,10 @@ const createActiveTeam = team => {
     const teamWebsite = document.createElement('a');
     teamWebsite.href = team.officialSiteUrl;
     teamWebsite.textContent = team.officialSiteUrl;
+    teamWebsite.target = '_blank';
     
     listElement.append(teamName, teamElements);
     teamElements.append(teamCity, teamVenue, firstSeason, teamWebsite);
-    
-    //I want to split this switch into a spearate function
     
     switch (team.division.name) {
         case 'Atlantic': 
@@ -97,7 +111,29 @@ const createActiveTeam = team => {
     }
 }
 
-const loopAndDisplayActiveTeams = teams => teams.forEach(team => createActiveTeam(team))
+const loopAndDisplayActiveTeams = teams => {
+    teams.forEach(team => createActiveTeam(team))
+
+    current.classList.remove('hidden');
+    eastern.classList.remove('hidden');
+    western.classList.remove('hidden');
+    atlantic.classList.remove('hidden');
+    metro.classList.remove('hidden');
+    central.classList.remove('hidden');
+    pacific.classList.remove('hidden');
+    divisions.forEach((division) => {
+        division.classList.remove('hidden');
+    })
+}
+
+const catchFoo = error => {
+    console.log(error);
+    
+    const sorryMessage = document.createElement('p');
+    sorryMessage.textContent = 'Sorry the teams could not load at this time.';
+
+    current.append(sorryMessage)
+}
 
 const activeTeamFetch = e => {
     fetch('https://statsapi.web.nhl.com/api/v1/teams')
@@ -109,6 +145,7 @@ const activeTeamFetch = e => {
         //teamsData.teams returns an Array of teams
         loopAndDisplayActiveTeams(teamsData.teams);
     })
+    .catch(catchFoo)
 
     horn.play();
 
@@ -180,22 +217,25 @@ const displayNewComment = e => {
 }
 
 const createDialogue = e => {
-    const dialogue = document.createElement('dialog');
-    dialogue.id = 'load_dialogue';
+    const dialog = document.createElement('dialog');
+    dialog.id = 'load-dialogue';
+
+    const dialogSection = document.createElement('section');
+    dialogSection.id = "dialog-section";
     
-    const dialogueHeader = document.createElement('h1');
-    dialogueHeader.textContent = 'Welcome Hockey Fans';
+    const dialogHeader = document.createElement('h1');
+    dialogHeader.textContent = 'Welcome Hockey Fans!!!';
 
-    const dialogueImage = document.createElement('img');
-    dialogueImage.src = './images/pexels-lynda-sanchez-1770650.jpg';
-    dialogueImage.alt = 'Michigan and Michigan Tech players skate in the open ice';
-    dialogueImage.id = 'dialog_image'
+    const dialogImage = document.createElement('img');
+    dialogImage.src = './images/NHL-logo-scuffed-ice.jpg';
+    dialogImage.alt = 'NHL logo under roughed ice';
+    dialogImage.id = 'dialog-image'
 
-    const dialoguePara = document.createElement('p');
-    dialoguePara.textContent = 'Thank you for visiting! Take a look at the past and present teams of the NHL.';
+    const dialogPara = document.createElement('p');
+    dialogPara.textContent = 'Thank you for visiting! Take a look at the current teams of the NHL.';
 
-    const dialogueSubHeader = document.createElement('h3');
-    dialogueSubHeader.textContent = "Don't forget to tell us your favorite team before you leave! 🏒";
+    const dialogSubHeader = document.createElement('h3');
+    dialogSubHeader.textContent = "Don't forget to tell us your favorite team before you leave! 🏒";
 
     const closeForm = document.createElement('form');
     
@@ -209,10 +249,11 @@ const createDialogue = e => {
     //     dialogue.classList = "hidden";
     // })
 
-    body.append(dialogue);
-    closeForm.append(closeBtn)
-    dialogue.showModal();
-    dialogue.append(dialogueHeader, dialogueImage, dialoguePara, dialogueSubHeader, closeForm);
+    body.append(dialog);
+    closeForm.append(closeBtn);
+    dialog.showModal();
+    dialogSection.append(dialogHeader, dialogImage, dialogPara, dialogSubHeader, closeForm);
+    dialog.append(dialogSection);
 }
 
 // Events

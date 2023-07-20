@@ -3,36 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NHL Past and Present</title>
+    <title>NHL Team Showcase</title>
     <link href="./index.css" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/modern-normalize/modern-normalize.css">
     <script defer src="./index.js"></script>
 </head>
 
 <body>
-    <header>
-        <h1>NHL Past and Present</h1>
-        <p>A look into the NHL teams that have come, stayed, and gone.</p>
+    <header id="main-header">
+        <h1>NHL Team Showcase</h1>
+        <p>Take a look at the current state of the NHL and get a chance to cheer for your favorite team!</p>
+        <section id="image-section">
+            <img src="./images/pexels-erik-mclean-7783413.jpg" alt="Jaromir Jagr playercard sits atop a pile of cards" class="header-images" id="first-image">
+            <img src="./images/NHL-collage.jpg" alt="Collage of NHL and Team Logos" class="header-images">
+            <img src="./images/NJ-intro.jpg" alt="NJ players enter the ice before a game" class="header-images">
+        </section>
     </header>
-
+    <br>
     <main>
-        <section id="current" class="team_section">Let's Look at Our Active NHL Teams
-            <button id="active_btn" class="section_btn">Active Teams</button>
-            <h2 id="eastern" class="conference hidden">Eastern</h2>
-                <h3 class="division hidden">Atlantic</h3>
-                    <ul id="atlantic_list" class="list hidden">
+        <section id="current" class="team-section">Let's Look at Our Active NHL Teams
+            <button id="active-btn" class="section-btn">Active Teams</button>
+            <h2 id="eastern" class="conference hidden">Eastern Conference</h2>
+                <h3 class="division hidden">Atlantic Division</h3>
+                    <ul id="atlantic-list" class="list hidden">
 
                     </ul>
-                <h3 class="division hidden">Metropolitan</h3>
-                    <ul id="metropolitan_list" class="list hidden">
+                <h3 class="division hidden">Metropolitan Division</h3>
+                    <ul id="metropolitan-list" class="list hidden">
 
                     </ul>
-            <h2 id="western" class="conference hidden">Western</h2>
-                <h3 class="division hidden">Central</h3>
-                    <ul id="central_list" class="list hidden">
+            <h2 id="western" class="conference hidden">Western Conference</h2>
+                <h3 class="division hidden">Central Division</h3>
+                    <ul id="central-list" class="list hidden">
 
                     </ul>
-                <h3 class="division hidden">Pacific</h3>
-                    <ul id="pacific_list" class="list hidden">
+                <h3 class="division hidden">Pacific Division</h3>
+                    <ul id="pacific-list" class="list hidden">
 
                     </ul>
         </section>
@@ -51,18 +57,27 @@
             <header>
                 <h2>Tell Us Your Favorite Team!</h2>
             </header>
-            <form id="comment_form">
-                <label for="user_name">Your Name:</label><br>
-                <input type="text" id="user_name" name="user_name" placeholder="Your Name Here"><br>
-                <label for="fav_team_select">Your Favorite Team</label>
-                <select name="fav_team_select" id="fav_team_select">
+            <form id="comment-form">
+                <label for="user-name">Your Name:</label><br>
+                <input type="text" id="user-name" name="user-name" placeholder="Your Name Here" required><br>
+                <label for="fav-team-select">Your Favorite Team:</label>
+                <select name="fav-team-select" id="fav-team-select" aria-placeholder="Select Team" required>
+                    <option value="">--Select Team--</option>
                 </select><br>
-                <label for="new_comment">Cheer Your Favorite Team Here:</label><br>
-                <input type="text" id="new_comment" name="new_comment"><br>
+                <label for="new_comment">Cheer For Your Favorite Team Here:</label><br>
+                <input type="text" id="new-comment" name="new-comment" placeholder="Let's Go..." required><br>
                 <input type="submit">
             </form>
         </section>
+        <section id="comment-section"></section>
     </main>
-    <audio src="./sounds/tml-horn.mp3" id="maple_leafs_horn"></audio>
+    <footer>
+        <p>All images credited to the NHL and Erik McLean</p>
+        <h4>Contact the Website Author:</h4>
+        <a href="https://www.linkedin.com/in/brenden-olding/" target="_blank">LinkedIn</a>
+        <a href="https://dev.to/oldingb21" target="_blank">DEV Blog</a>
+        <a href="https://github.com/oldingb21" target="_blank">Github</a>
+    </footer>
+    <audio src="./sounds/tml-horn.mp3" id="maple-leafs-horn"></audio>
 </body>
 </html>
