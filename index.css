@@ -114,6 +114,18 @@ footer {
     padding: 10px
 }
 
+header, h3 {
+    text-align: center;
+}
+
+#current-text {
+    text-align: center;
+}
+
+footer, p {
+    text-align: center;
+}
+
 @media screen and (min-width: 500px) {
     .list {
         display: grid;
