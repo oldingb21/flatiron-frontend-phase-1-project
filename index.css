@@ -33,16 +33,19 @@ dialog {
 
 
 .header-images {
-    max-height: 250px;
-    max-width: auto;
+    height: 25vh;
+    width: 30vw;
+    object-fit: cover;
 }
 
 #image-section {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     column-gap: 5%;
+    row-gap: 10px;
 }
 
 #main-header {
@@ -111,6 +114,18 @@ footer {
     padding: 10px
 }
 
+header, h3 {
+    text-align: center;
+}
+
+#current-text {
+    text-align: center;
+}
+
+footer, p {
+    text-align: center;
+}
+
 @media screen and (min-width: 500px) {
     .list {
         display: grid;
@@ -118,16 +133,8 @@ footer {
     }
 }
 
-@media screen and (max-width: 499px) {
-    #image-section {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        row-gap: 10px;
-    }
-
-    .header-images {
-        max-width: 75%;
-    }
+@media screen and (max-width: 800px) {
+     .header-images {
+        width: 75vw;
+    } 
 }

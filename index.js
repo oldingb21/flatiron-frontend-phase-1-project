@@ -212,7 +212,7 @@ const activeTeamOptionsFetch = e => {
 
 const displayNewComment = e => {
     e.preventDefault();
-    const newComment = new Comment(e.target.user_name.value, e.target.fav_team_select.value, e.target.new_comment.value)
+    const newComment = new Comment(e.target['user-name'].value, e.target['fav-team-select'].value, e.target['new-comment'].value)
     newComment.createCommentElements();
 }
 
