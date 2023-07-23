@@ -1,14 +1,14 @@
-#Welcome to NHL Team Showcase Repository!
+# Welcome to NHL Team Showcase Repository!
 
 NHL Team Showcase is a website for hockey fans to check out the current slate of NHL 
 teams, and cheer for their favorite team.
 
-##Installation Instructions
+## Installation Instructions
 
 In order to install this program, you can clone the repository onto your computer, 
 using the SSH key in your CLI. The website is also being hosted at https://oldingb21.github.io/flatiron-frontend-phase-1-project/ if you just want to use the website.
 
-##User Guide
+## User Guide
 
 As a user of the website, you will be greeted with a dialog. The dialog welcomes the 
 user and gives a brief guide on what the user can expect to do on the website. After
@@ -28,7 +28,7 @@ The cheer/comment will then be displayed under the comment form.
 The footer of the website contains credit for the images used on the website and links
 to the website developer's social media related to web development.
 
-##Contributions
+## Contributions
 
 I welcome anyone who would like to contribute to this website. Please write anything
 in the working branch and create a pull request if you think it should merge to the 
@@ -37,6 +37,6 @@ use a different API that uses CORS to display the inactive teams from the NHL's 
 If you have major change ideas, please submit an issue ticket, and I will respond as 
 soon as I can after seeing the ticket.
 
-##License
+## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
