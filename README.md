@@ -10,6 +10,8 @@ using the SSH key in your CLI. The website is also being hosted at https://oldin
 
 ## User Guide
 
+**Currently under reconstruction. Need to find new working API to fulfill user needs.
+
 As a user of the website, you will be greeted with a dialog. The dialog welcomes the 
 user and gives a brief guide on what the user can expect to do on the website. After
 closing the dialog, users will see the title and images emphasizing the theme of the 
